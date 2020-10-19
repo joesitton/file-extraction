@@ -3,7 +3,7 @@
 module FileExtraction;
 
 export {
-	const path: string = "" &redef;
+    const path: string = "" &redef;
 
     const bad_extensions: set[string] = {
         "x-cross-domain-policy",
@@ -26,14 +26,14 @@ export {
         "txt"
     } &redef;
 
-	global extract: hook(f: fa_file, meta: fa_metadata);
-	global ignore: hook(f: fa_file, meta: fa_metadata);
+    global extract: hook(f: fa_file, meta: fa_metadata);
+    global ignore: hook(f: fa_file, meta: fa_metadata);
 }
 
 event file_sniff(f: fa_file, meta: fa_metadata)
-	{
-	if ( meta?$mime_type && !hook FileExtraction::extract(f, meta) )
-		{
+    {
+    if ( meta?$mime_type && !hook FileExtraction::extract(f, meta) )
+        {
             if ( !hook FileExtraction::ignore(f, meta) )
                 return;
             if ( meta$mime_type in mime_to_ext )
