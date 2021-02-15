@@ -46,7 +46,7 @@ event file_sniff(f: fa_file, meta: fa_metadata)
                 {
                 if (fext in bad_extensions == F)
                     {
-                    local filename = fmt("%s/HTTP-%s.%s", path, md5_hash(f$http$id, f$id), fext);
+                    local filename = fmt("%s/HTTP-%s.%s", path, sha256_hash(f$http$id, f$id), fext);
                     Files::add_analyzer(f, Files::ANALYZER_EXTRACT, [$extract_filename=filename]);
                     }
                 }
